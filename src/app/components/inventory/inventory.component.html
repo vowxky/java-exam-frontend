@@ -1,0 +1,44 @@
+<table class="table">
+    <thead>
+      <tr class="table-secondary clickable">
+        <th scope="col">Codigo</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Marca</th>
+        <th scope="col"></th>
+        <th>
+          <button type="button" class="btn btn-success" (click)="onGoToNew()">Nuevo</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listProducts">
+        <td>{{item.id}}</td>
+        <td>
+          <img width="60px" height="50px" src="{{item.image}}" alt="imagen 1" />
+        </td>
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price | currency: 'S/. '}}</td>
+        <td>{{item.stock}}</td>
+        <td>{{item.brand}}</td>
+        <td class="align-middle text-end">
+          <button type="button" class="btn btn-outline-success mx-1" 
+            (click)="onGoToEdit(item)">
+            Editar
+          </button>
+          <button type="button" class="btn btn-outline-primary mx-1" 
+            (click)="onGoToDetail(item)">
+            Detalle
+          </button>
+          <button type="button" class="btn btn-outline-danger mx-1" 
+          (click)="onDelete(item)">
+          Eliminar
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

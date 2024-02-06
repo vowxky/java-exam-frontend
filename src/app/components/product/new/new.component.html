@@ -1,0 +1,90 @@
+<div class="mx-2 my-3 col-md-1">
+    <button type="button" class="btn btn-outline-primary" (click)="onGoBack()">
+      Regresar
+    </button>
+  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    <form class="mt-3 col-md-6" #productForm="ngForm" (ngSubmit)="onSave(productForm.value)">
+      <div class="row">
+        <h4>Detalle del Producto: {{'ID'}}</h4>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="productName">Producto:</label>
+          <input type="text" id="productName" name="title" 
+            class="form-control shadow-none"
+            #title = "ngModel"
+            ngModel
+            [ngClass]="{'is-valid': !title.invalid, 'is-invalid': title.invalid}"
+            minlength="5"
+            required
+          >
+        </div>
+        <div class="col-md-6">
+          <label for="productDescription">Descripción:</label>
+          <input type="text" id="productDescription" name="description" 
+            class="form-control shadow-none"
+            placeholder="Descripción"
+            #description = "ngModel"
+            ngModel
+            [ngClass]="{'is-valid': !description.invalid, 'is-invalid': description.invalid}"
+            minlength="5"
+            required
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 py-2">
+          <label for="productPrice">Precio:</label>
+          <input type="number" id="productPrice" name="price" 
+            class="form-control shadow-none"
+            placeholder="Price"
+            #price = "ngModel"
+            ngModel
+            [ngClass]="{'is-valid': !price.invalid, 'is-invalid': price.invalid}"
+            required
+          >
+        </div>
+        <div class="col-md-6 py-2">
+          <label for="productStock">Stock:</label>
+          <input type="number" id="productStock" name="stock" 
+            class="form-control shadow-none"
+            placeholder="Stock"
+            #stock = "ngModel"
+            ngModel
+            [ngClass]="{'is-valid': !stock.invalid, 'is-invalid': stock.invalid}"
+            required
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 py-2">
+          <label for="productBrand">Marca:</label>
+          <input type="text" id="productBrand" name="brand" 
+            class="form-control shadow-none"
+            placeholder="Brand"
+            #brand = "ngModel"
+            ngModel
+            [ngClass]="{'is-valid': !brand.invalid, 'is-invalid': brand.invalid}"
+            required
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 py-2">
+          <label for="productImage">Imagen:</label>
+          <br>
+          <input type="file" id="productImage" name="image" (change)="onFileSelected($event, productForm.value)" accept="image/*" #fileInput>
+          <div class="col my-4">
+            <img *ngIf="productForm.value.image" [src]="productForm.value.image" width="150px" height="150" alt="Imagen seleccionada">
+            <button type="button" class="btn btn-outline-danger mt-2" (click)="clearFile()">Quitar Imagen</button>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group col-md-3 my-3">
+        <button type="submit" class="btn btn-outline-success" [disabled]="productForm.invalid">Guardar</button>
+      </div>
+    </form>
+  </div>
+  {{productForm.value | json}}
+  

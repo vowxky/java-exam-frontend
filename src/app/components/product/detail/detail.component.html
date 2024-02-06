@@ -1,0 +1,39 @@
+<div class="btn-group mx-2 my-3">
+    <button type="button" class="btn btn-outline-primary" (click)="onGoBack()">
+      Regresar
+    </button>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <h4>Detalle del Producto {{product.id}}</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item">
+          Producto : <h4>{{product.title}}</h4>
+        </li>
+        <li class="list-group-item">
+          Descripcion : <h4>{{product.description}}</h4>
+        </li>
+        <li class="list-group-item">
+          Precio : <h4>{{product.price}}</h4>
+        </li>
+        <li class="list-group-item">
+          Stock : <h4>{{product.stock}}</h4>
+        </li>
+        <li class="list-group-item">
+          Marca : <h4>{{product.brand}}</h4>
+        </li>
+        <li class="list-group-item">
+          <div class="my-4">
+            <img width="150px" height="150"
+              src="{{product.image}}"
+            />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
